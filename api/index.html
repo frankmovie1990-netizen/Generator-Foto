@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Generator Foto Produk & UGC — Gemini</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="container">
+    <h1>Generator Foto Produk & UGC</h1>
+    <p class="subtitle">Model: gemini-2.5-flash-image • API key milik pengguna</p>
+  </header>
+
+  <main class="container grid">
+    <!-- Panel Kiri -->
+    <section class="card">
+      <h2>Pengaturan</h2>
+      <label class="label">API Key Google AI Studio
+        <input id="apiKey" class="input" type="password" placeholder="Tempel API key kamu di sini" />
+      </label>
+      <p class="hint">Kunci tidak disimpan. Dipakai lokal di browser & diteruskan ke proxy sekali pakai.</p>
+
+      <h3 class="mt-24">Referensi Gambar (Opsional)</h3>
+      <div class="uploader">
+        <label>Gambar Referensi Produk
+          <input id="refProduct" type="file" accept="image/*" />
+        </label>
+        <label>Gambar Referensi Model
+          <input id="refModel" type="file" accept="image/*" />
+        </label>
+      </div>
+
+      <h3 class="mt-24">Parameter Tambahan</h3>
+      <label class="label">Preferensi Angle Kamera
+        <select id="angle" class="select">
+          <option value="">Default (Otomatis)</option>
+        </select>
+      </label>
+
+      <label class="label">Rasio Aspek
+        <select id="ratio" class="select">
+          <option value="1:1">1:1 (Square)</option>
+          <option value="9:16">9:16 (Vertical)</option>
+          <option value="16:9">16:9 (Horizontal)</option>
+          <option value="4:5">4:5 (Portrait)</option>
+          <option value="3:2">3:2</option>
+        </select>
+      </label>
+
+      <label class="label">Mode Background
+        <select id="bgMode" class="select">
+          <option value="Clean Neutral">Clean Neutral</option>
+          <option value="Lifestyle">Lifestyle</option>
+          <option value="Natural Outdoor">Natural Outdoor</option>
+          <option value="Studio Soft Light">Studio Soft Light</option>
+          <option value="Custom">Custom (ketik sendiri)</option>
+        </select>
+      </label>
+      <label class="label" id="bgCustomWrap" style="display:none">
+        Teks Background Kustom
+        <input id="bgCustom" class="input" placeholder="mis: cozy coffee shop, wooden table, warm bokeh" />
+      </label>
+
+      <label class="label">Gaya Font Overlay (opsional)
+        <select id="fontStyle" class="select">
+          <option value="Sans-Serif">Sans-Serif</option>
+          <option value="Serif">Serif</option>
+          <option value="Rounded">Rounded</option>
+          <option value="Handwritten">Handwritten</option>
+          <option value="None">None (tanpa overlay)</option>
+        </select>
+      </label>
+
+      <label class="label">Jumlah Gambar
+        <select id="count" class="select">
+          <option value="5">5</option>
+          <option value="4">4</option>
+          <option value="3">3</option>
+          <option value="2">2</option>
+          <option value="1">1</option>
+        </select>
+      </label>
+
+      <h3 class="mt-24">Deskripsi Produk / Brief</h3>
+      <textarea id="brief" class="textarea" rows="6" placeholder="Contoh: Botol parfum 50ml warna hitam matte, label minimalis gold. Fokus close-up tekstur & pantulan cahaya."></textarea>
+
+      <button id="btnGenerate" class="btn-primary">Hasilkan Foto</button>
+      <p id="status" class="status"></p>
+    </section>
+
+    <!-- Panel Kanan -->
+    <section class="card">
+      <h2>Hasil</h2>
+      <div id="results" class="results"></div>
+
+      <h3 class="mt-24">Prompt yang Dipakai</h3>
+      <pre id="promptOut" class="code"></pre>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <span>Ringan • aman (proxy) • siap di-deploy Vercel</span>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
